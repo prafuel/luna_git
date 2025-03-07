@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify, render_template, send_file
+from flask_cors import CORS
 import os
 import time
 import base64
@@ -11,6 +12,7 @@ from langchain_openai import OpenAIEmbeddings
 from langchain_astradb import AstraDBVectorStore
 
 app = Flask(__name__, template_folder="templates", static_folder="static")
+CORS(app)
 
 # 📌 Upload PDF and Store in AstraDB
 def vector_datastore_upload(pdf_path):
